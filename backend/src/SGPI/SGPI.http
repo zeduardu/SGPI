@@ -1,0 +1,6 @@
+@SGPI_HostAddress = http://localhost:5250
+
+GET {{SGPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

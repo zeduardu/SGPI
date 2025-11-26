@@ -1,0 +1,17 @@
+.container {
+  padding: 20px;
+}
+
+.actions {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+table {
+  width: 100%;
+}
+
+.text-warn {
+  color: #f44336;
+}

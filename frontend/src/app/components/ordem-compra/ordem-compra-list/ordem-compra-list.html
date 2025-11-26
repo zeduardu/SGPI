@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="header">
+    <h1>Ordens de Compra</h1>
+    <button mat-raised-button color="primary" routerLink="/ordem-compra/novo">Nova OC</button>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="fornecedor">
+      <th mat-header-cell *matHeaderCellDef>Fornecedor</th>
+      <td mat-cell *matCellDef="let element">{{ element.fornecedor?.nome }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dataCriacao">
+      <th mat-header-cell *matHeaderCellDef>Data Criação</th>
+      <td mat-cell *matCellDef="let element">{{ element.dataCriacao | date : 'dd/MM/yyyy' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let element">{{ getStatusLabel(element.status) }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef>Ações</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" [routerLink]="['/ordem-compra', element.id]">
+          <mat-icon>visibility</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

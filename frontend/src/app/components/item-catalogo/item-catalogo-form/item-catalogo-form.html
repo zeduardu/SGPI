@@ -1,0 +1,59 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ isEditMode ? 'Editar Item' : 'Novo Item' }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="save()">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="nome" placeholder="Ex: Mouse Óptico" />
+          <mat-error *ngIf="form.get('nome')?.hasError('required')"> Nome é obrigatório </mat-error>
+          <mat-error *ngIf="form.get('nome')?.hasError('minlength')">
+            Nome deve ter pelo menos 3 caracteres
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Descrição Detalhada</mat-label>
+          <textarea
+            matInput
+            formControlName="descricaoDetalhada"
+            placeholder="Detalhes do item..."
+          ></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Unidade de Medida</mat-label>
+          <mat-select formControlName="unidadeMedida">
+            <mat-option *ngFor="let unidade of unidades" [value]="unidade.value">
+              {{ unidade.label }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('unidadeMedida')?.hasError('required')">
+            Unidade é obrigatória
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Categoria</mat-label>
+          <mat-select formControlName="categoriaId">
+            <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
+              {{ categoria.nome }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('categoriaId')?.hasError('required')">
+            Categoria é obrigatória
+          </mat-error>
+        </mat-form-field>
+
+        <div class="actions">
+          <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+            Salvar
+          </button>
+          <button mat-button type="button" routerLink="/itens-catalogo">Cancelar</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

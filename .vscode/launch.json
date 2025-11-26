@@ -1,0 +1,26 @@
+{
+  "configurations": [
+    {
+      "name": "C#: SGPI [https]",
+      "type": "dotnet",
+      "request": "launch",
+      "projectPath": "${workspaceFolder}/backend/src/SGPI/SGPI.csproj",
+      "launchConfigurationId": "TargetFramework=;https"
+    },
+    {
+      "name": "ng serve",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "npm: start - frontend",
+      "url": "http://localhost:4200/",
+      "webRoot": "${workspaceFolder}/frontend",
+      "sourceMapPathOverrides": {
+        "webpack:///./src/*": "${webRoot}/src/*",
+        "webpack:///src/*": "${webRoot}/src/*",
+        "webpack:///*": "*",
+        "webpack:///./~/*": "${webRoot}/node_modules/*",
+        "webpack:///./node_modules/*": "${webRoot}/node_modules/*"
+      }
+    }
+  ]
+}

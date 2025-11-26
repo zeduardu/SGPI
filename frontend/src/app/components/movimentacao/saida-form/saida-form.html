@@ -1,0 +1,45 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Registrar Saída de Material</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="save()">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Item</mat-label>
+          <mat-select formControlName="itemCatalogoId">
+            <mat-option *ngFor="let item of itens" [value]="item.id">
+              {{ item.nome }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('itemCatalogoId')?.hasError('required')">
+            Item é obrigatório
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Quantidade</mat-label>
+          <input matInput type="number" formControlName="quantidade" />
+          <mat-error *ngIf="form.get('quantidade')?.hasError('min')">
+            Quantidade deve ser maior que zero
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Solicitante</mat-label>
+          <input matInput formControlName="solicitante" placeholder="Nome do solicitante" />
+          <mat-error *ngIf="form.get('solicitante')?.hasError('required')">
+            Solicitante é obrigatório
+          </mat-error>
+        </mat-form-field>
+
+        <div class="actions">
+          <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+            Registrar Saída
+          </button>
+          <button mat-button type="button" routerLink="/dashboard">Cancelar</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,131 @@
+<div class="container" *ngIf="ordemCompra">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Ordem de Compra #{{ ordemCompra.id }}</mat-card-title>
+      <mat-card-subtitle>
+        Fornecedor: {{ ordemCompra.fornecedor?.nome }} | Data:
+        {{ ordemCompra.dataCriacao | date : 'dd/MM/yyyy' }} | Status:
+        <strong>{{ getStatusLabel(ordemCompra.status) }}</strong>
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p *ngIf="ordemCompra.observacao">
+        <strong>Observação:</strong> {{ ordemCompra.observacao }}
+      </p>
+
+      <h3>Itens</h3>
+      <form [formGroup]="receiveForm">
+        <table mat-table [dataSource]="ordemCompra.itens" class="mat-elevation-z8">
+          <ng-container matColumnDef="item">
+            <th mat-header-cell *matHeaderCellDef>Item</th>
+            <td mat-cell *matCellDef="let element">{{ element.itemCatalogo?.nome }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="quantidade">
+            <th mat-header-cell *matHeaderCellDef>Qtd. Solicitada</th>
+            <td mat-cell *matCellDef="let element">{{ element.quantidadeSolicitada }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="recebido">
+            <th mat-header-cell *matHeaderCellDef>Qtd. Recebida</th>
+            <td mat-cell *matCellDef="let element">{{ element.quantidadeRecebida }}</td>
+          </ng-container>
+
+          <!-- Columns for Normal View -->
+          <ng-container matColumnDef="precoUnitario">
+            <th mat-header-cell *matHeaderCellDef>Preço Unitário</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.precoUnitario | currency : 'BRL' }}
+            </td>
+          </ng-container>
+
+          <!-- Columns for Receiving View -->
+          <ng-container matColumnDef="aReceber">
+            <th mat-header-cell *matHeaderCellDef>A Receber</th>
+            <td mat-cell *matCellDef="let element; let i = index" [formGroupName]="i">
+              <mat-form-field appearance="outline" class="small-input" *ngIf="isReceiving">
+                <input matInput type="number" formControlName="quantidade" />
+              </mat-form-field>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="valorRecebimento">
+            <th mat-header-cell *matHeaderCellDef>Valor Unit. (NF)</th>
+            <td mat-cell *matCellDef="let element; let i = index" [formGroupName]="i">
+              <mat-form-field appearance="outline" class="small-input" *ngIf="isReceiving">
+                <input matInput type="number" formControlName="valorUnitario" />
+              </mat-form-field>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="total">
+            <th mat-header-cell *matHeaderCellDef>Total</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.quantidadeSolicitada * element.precoUnitario | currency : 'BRL' }}
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr
+            mat-row
+            *matRowDef="let row; columns: displayedColumns"
+            [formArrayName]="'itens'"
+          ></tr>
+        </table>
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+      <button mat-button routerLink="/ordem-compra">Voltar</button>
+
+      <button
+        mat-raised-button
+        color="primary"
+        *ngIf="ordemCompra.status === StatusOrdemDeCompra.ABERTA"
+        (click)="approve()"
+      >
+        Aprovar
+      </button>
+
+      <button
+        mat-raised-button
+        color="accent"
+        *ngIf="
+          (ordemCompra.status === StatusOrdemDeCompra.APROVADA ||
+            ordemCompra.status === StatusOrdemDeCompra.CONCLUIDA_PARCIAL) &&
+          !isReceiving
+        "
+        (click)="toggleReceiving()"
+      >
+        Receber Itens
+      </button>
+
+      <button
+        mat-raised-button
+        color="primary"
+        *ngIf="isReceiving"
+        (click)="submitReceive()"
+        [disabled]="receiveForm.invalid"
+      >
+        Confirmar Recebimento
+      </button>
+
+      <button mat-button *ngIf="isReceiving" (click)="toggleReceiving()">
+        Cancelar Recebimento
+      </button>
+
+      <button
+        mat-raised-button
+        color="warn"
+        *ngIf="
+          ordemCompra.status !== StatusOrdemDeCompra.CONCLUIDA_TOTAL &&
+          ordemCompra.status !== StatusOrdemDeCompra.CANCELADA
+        "
+        (click)="cancel()"
+      >
+        Cancelar OC
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

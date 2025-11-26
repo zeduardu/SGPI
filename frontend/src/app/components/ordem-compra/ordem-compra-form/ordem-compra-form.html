@@ -1,0 +1,72 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Nova Ordem de Compra</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Fornecedor</mat-label>
+          <mat-select formControlName="fornecedorId">
+            <mat-option *ngFor="let f of fornecedores" [value]="f.id">
+              {{ f.nome }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Observação</mat-label>
+          <textarea matInput formControlName="observacao"></textarea>
+        </mat-form-field>
+
+        <h3>Itens</h3>
+        <div formArrayName="itens">
+          <div
+            *ngFor="let item of itens.controls; let i = index"
+            [formGroupName]="i"
+            class="item-row"
+          >
+            <mat-form-field appearance="fill">
+              <mat-label>Item</mat-label>
+              <mat-select formControlName="itemCatalogoId">
+                <mat-option *ngFor="let ic of itensCatalogo" [value]="ic.id">
+                  {{ ic.nome }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Quantidade</mat-label>
+              <input matInput type="number" formControlName="quantidadeSolicitada" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Preço Unitário</mat-label>
+              <input matInput type="number" formControlName="precoUnitario" />
+            </mat-form-field>
+
+            <button mat-icon-button color="warn" type="button" (click)="removeItem(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <button mat-button type="button" (click)="addItem()">
+          <mat-icon>add</mat-icon> Adicionar Item
+        </button>
+
+        <div class="actions">
+          <button mat-button type="button" routerLink="/ordem-compra">Cancelar</button>
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="form.invalid || itens.length === 0"
+          >
+            Salvar
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

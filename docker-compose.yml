@@ -1,0 +1,28 @@
+services:
+
+  db:
+    image: postgres:17
+    restart: always
+    # Define o limite de memória compartilhada (importante para manutenção do Postgres)
+    shm_size: 128mb
+    ports:
+      - "5432:5432" # Permite acesso localhost:5432
+    environment:
+      POSTGRES_USER: sgpi
+      POSTGRES_PASSWORD: sgpi
+      POSTGRES_DB: sgpi
+    volumes:
+      # Mapeia o volume nomeado para o diretório de dados do container
+      - postgres_data:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+# Definição do volume para persistência
+volumes:
+  postgres_data:

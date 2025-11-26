@@ -1,0 +1,92 @@
+<mat-card>
+  <mat-card-title>Status do Estoque</mat-card-title>
+  <mat-card-content>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Item Column -->
+      <ng-container matColumnDef="item">
+        <th mat-header-cell *matHeaderCellDef>Item</th>
+        <td mat-cell *matCellDef="let element">{{ element.itemCatalogo?.nome }}</td>
+      </ng-container>
+
+      <!-- Categoria Column -->
+      <ng-container matColumnDef="categoria">
+        <th mat-header-cell *matHeaderCellDef>Categoria</th>
+        <td mat-cell *matCellDef="let element">{{ element.itemCatalogo?.categoria?.nome }}</td>
+      </ng-container>
+
+      <!-- Quantidade Column -->
+      <ng-container matColumnDef="quantidadeEmEstoque">
+        <th mat-header-cell *matHeaderCellDef>Qtd. Atual</th>
+        <td mat-cell *matCellDef="let element">{{ element.quantidadeEmEstoque }}</td>
+      </ng-container>
+
+      <!-- Minimo Column -->
+      <ng-container matColumnDef="estoqueMinimo">
+        <th mat-header-cell *matHeaderCellDef>Mínimo</th>
+        <td mat-cell *matCellDef="let element">{{ element.estoqueMinimo }}</td>
+      </ng-container>
+
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          [ngClass]="{
+            'status-ok': element.status === 'OK',
+            'status-warning': element.status === 'ATENÇÃO',
+            'status-danger': element.status === 'COMPRAR'
+          }"
+        >
+          {{ element.status }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="dashboard-card">
+  <mat-card-header>
+    <mat-card-title>Últimas Movimentações</mat-card-title>
+  </mat-card-header>
+  <table mat-table [dataSource]="recentMovements" class="mat-elevation-z8">
+    <ng-container matColumnDef="data">
+      <th mat-header-cell *matHeaderCellDef>Data</th>
+      <td mat-cell *matCellDef="let element">{{ element.data | date : 'dd/MM/yyyy HH:mm' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="item">
+      <th mat-header-cell *matHeaderCellDef>Item</th>
+      <td mat-cell *matCellDef="let element">{{ element.itemCatalogo?.nome }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="tipo">
+      <th mat-header-cell *matHeaderCellDef>Tipo</th>
+      <td mat-cell *matCellDef="let element">
+        {{
+          element.tipoMovimentacao === 0
+            ? 'ENTRADA'
+            : element.tipoMovimentacao === 1
+            ? 'SAÍDA'
+            : 'AJUSTE'
+        }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="quantidade">
+      <th mat-header-cell *matHeaderCellDef>Qtd</th>
+      <td mat-cell *matCellDef="let element">{{ element.quantidade }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="usuario">
+      <th mat-header-cell *matHeaderCellDef>Usuário</th>
+      <td mat-cell *matCellDef="let element">{{ element.usuario?.userName }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="recentMovementsColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: recentMovementsColumns"></tr>
+  </table>
+</mat-card>

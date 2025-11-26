@@ -1,0 +1,45 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Ajuste de Inventário</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="save()">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Item</mat-label>
+          <mat-select formControlName="itemCatalogoId">
+            <mat-option *ngFor="let item of itens" [value]="item.id">
+              {{ item.nome }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('itemCatalogoId')?.hasError('required')">
+            Item é obrigatório
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Nova Quantidade (Contagem Física)</mat-label>
+          <input matInput type="number" formControlName="novaQuantidade" />
+          <mat-error *ngIf="form.get('novaQuantidade')?.hasError('min')">
+            Quantidade não pode ser negativa
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Observação / Justificativa</mat-label>
+          <textarea matInput formControlName="observacao" rows="3"></textarea>
+          <mat-error *ngIf="form.get('observacao')?.hasError('required')">
+            Observação é obrigatória
+          </mat-error>
+        </mat-form-field>
+
+        <div class="actions">
+          <button mat-raised-button color="warn" type="submit" [disabled]="form.invalid">
+            Realizar Ajuste
+          </button>
+          <button mat-button type="button" routerLink="/dashboard">Cancelar</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

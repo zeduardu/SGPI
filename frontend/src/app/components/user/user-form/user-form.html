@@ -1,0 +1,63 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ isEditMode ? 'Editar Usuário' : 'Novo Usuário' }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="save()">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Nome Completo</mat-label>
+          <input matInput formControlName="nomeCompleto" />
+          <mat-error *ngIf="form.get('nomeCompleto')?.hasError('required')">
+            Nome é obrigatório
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" />
+          <mat-error *ngIf="form.get('email')?.hasError('required')">
+            Email é obrigatório
+          </mat-error>
+          <mat-error *ngIf="form.get('email')?.hasError('email')"> Email inválido </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Cargo</mat-label>
+          <input matInput formControlName="cargo" placeholder="Ex: Gerente" />
+          <mat-error *ngIf="form.get('cargo')?.hasError('required')">
+            Cargo é obrigatório
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Função (Role)</mat-label>
+          <mat-select formControlName="role">
+            <mat-option value="">Nenhuma</mat-option>
+            <mat-option value="Admin">Admin</mat-option>
+            <mat-option value="GestorNTI">GestorNTI</mat-option>
+            <mat-option value="OperadorNTI">OperadorNTI</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width" *ngIf="!isEditMode">
+          <mat-label>Senha</mat-label>
+          <input matInput formControlName="password" type="password" />
+          <mat-error *ngIf="form.get('password')?.hasError('required')">
+            Senha é obrigatória
+          </mat-error>
+          <mat-error *ngIf="form.get('password')?.hasError('minlength')">
+            Senha deve ter no mínimo 6 caracteres
+          </mat-error>
+        </mat-form-field>
+
+        <div class="actions">
+          <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+            Salvar
+          </button>
+          <button mat-button type="button" routerLink="/users">Cancelar</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
