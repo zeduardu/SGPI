@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>SGPI</span>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/dashboard">Painel</a>
+      <a mat-list-item routerLink="/inventory">Inventário</a>
+      <a mat-list-item routerLink="/categorias">Categorias</a>
+      <a mat-list-item routerLink="/fornecedores">Fornecedores</a>
+      <a mat-list-item routerLink="/itens-catalogo">Itens catálogo</a>
+      <a mat-list-item routerLink="/estoque">Estoque</a>
+      <a mat-list-item routerLink="/cotacoes">Cotações</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

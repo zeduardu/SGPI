@@ -1,12 +1,7 @@
 {
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
   "configurations": [
-    {
-      "name": "C#: SGPI [https]",
-      "type": "dotnet",
-      "request": "launch",
-      "projectPath": "${workspaceFolder}/backend/src/SGPI/SGPI.csproj",
-      "launchConfigurationId": "TargetFramework=;https"
-    },
     {
       "name": "ng serve",
       "type": "msedge",
