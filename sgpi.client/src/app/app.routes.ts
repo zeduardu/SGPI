@@ -20,8 +20,15 @@ import { OrdemCompraFormComponent } from './components/ordem-compra/ordem-compra
 import { OrdemCompraDetailsComponent } from './components/ordem-compra/ordem-compra-details/ordem-compra-details';
 import { adminGuard } from './auth/admin.guard';
 import { authGuard } from './auth/auth.guard';
+import {Layout} from './layout/layout';
 
 export const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: Login },
+  {
+    path: 'admin',
+    component: Layout
+  },
   {
     path: 'reports/movements',
     loadComponent: () =>
@@ -44,9 +51,7 @@ export const routes: Routes = [
       import('./components/shopping-list/shopping-list').then((m) => m.ShoppingListComponent),
     canActivate: [authGuard],
   },
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: Dashboard },
-  { path: 'login', component: Login },
   { path: 'categorias', component: CategoriaListComponent },
   { path: 'categorias/new', component: CategoriaFormComponent },
   { path: 'categorias/:id', component: CategoriaFormComponent },
@@ -70,4 +75,6 @@ export const routes: Routes = [
   { path: 'ordem-compra/:id', component: OrdemCompraDetailsComponent },
   { path: 'movimentacao/saida', component: SaidaFormComponent },
   { path: 'movimentacao/ajuste', component: AjusteFormComponent },
+
+  { path: '**', redirectTo: '/login', pathMatch: 'full' },
 ];
