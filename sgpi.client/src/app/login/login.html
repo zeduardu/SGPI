@@ -1,19 +1,71 @@
-<mat-card>
-  <mat-card-title>Login</mat-card-title>
-  <mat-card-content>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <mat-form-field appearance="fill">
+<!--<div class="login-form">-->
+<!--  <mat-card>-->
+<!--    <mat-card-title>Login</mat-card-title>-->
+<!--    <mat-card-content>-->
+<!--      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">-->
+<!--        <mat-form-field appearance="fill">-->
+<!--          <mat-label>Email</mat-label>-->
+<!--          <input matInput type="email" formControlName="email">-->
+<!--          <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Email is required</mat-error>-->
+<!--          <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Invalid email format</mat-error>-->
+<!--        </mat-form-field>-->
+<!--        <mat-form-field appearance="fill">-->
+<!--          <mat-label>Password</mat-label>-->
+<!--          <input matInput type="password" formControlName="password">-->
+<!--          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Password is required</mat-error>-->
+<!--        </mat-form-field>-->
+<!--        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>-->
+<!--      </form>-->
+<!--    </mat-card-content>-->
+<!--  </mat-card>-->
+<!--</div>-->
+
+<div class="login-container">
+  <!-- Círculos decorativos para o efeito de fundo -->
+  <div class="blob"></div>
+  <div class="blob"></div>
+
+  <div class="login-card">
+    <div class="login-header">
+      <h2>Bem-vindo</h2>
+      <p>Acesse sua conta para continuar</p>
+    </div>
+
+    <form [formGroup]="loginForm" class="login-form" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" placeholder="seu@email.com" required>
+      </div>
+
+      <mat-form-field appearance="outline" floatLabel="always">
         <mat-label>Email</mat-label>
         <input matInput type="email" formControlName="email">
         <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Email is required</mat-error>
         <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Invalid email format</mat-error>
       </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Password</mat-label>
-        <input matInput type="password" formControlName="password">
-        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Password is required</mat-error>
+
+      <div class="input-group">
+        <label for="password">Senha</label>
+        <input type="password" id="password" placeholder="••••••••" required>
+      </div>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Senha</mat-label>
+        <input matInput type="email" formControlName="password">
+        <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Email is required</mat-error>
+        <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Invalid email format</mat-error>
       </mat-form-field>
-      <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
+
+      <div class="options">
+        <label><input type="checkbox"> Lembrar-me</label>
+        <a href="#">Esqueceu a senha?</a>
+      </div>
+
+      <button type="submit" class="login-button">Entrar</button>
+
+      <div class="footer-link">
+        Não tem uma conta? <a href="#">Cadastre-se</a>
+      </div>
     </form>
-  </mat-card-content>
-</mat-card>
+  </div>
+</div>
