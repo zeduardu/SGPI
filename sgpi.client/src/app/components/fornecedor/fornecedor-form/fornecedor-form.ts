@@ -5,8 +5,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { FornecedorService } from '../../../services/fornecedor';
-import { Fornecedor } from '../../../interfaces/fornecedor';
+import { FornecedorService } from '@services/fornecedor';
+import { Fornecedor } from '../../../data/types/fornecedor';
 
 @Component({
   selector: 'app-fornecedor-form',
@@ -20,7 +20,7 @@ import { Fornecedor } from '../../../interfaces/fornecedor';
     RouterLink,
   ],
   templateUrl: './fornecedor-form.html',
-  styleUrls: ['./fornecedor-form.css'],
+  styleUrls: ['./fornecedor-form.scss'],
 })
 export class FornecedorFormComponent implements OnInit {
   private fb = inject(FormBuilder);

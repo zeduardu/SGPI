@@ -5,8 +5,8 @@ import {
   MovimentacaoEstoque,
   RegistrarSaidaRequest,
   RegistrarAjusteRequest,
-} from '../interfaces/movimentacao-estoque';
-import { environment } from '../../environments/environment';
+} from '@entities/movimentacao-estoque';
+import { environment } from '@env';
 
 @Injectable({
   providedIn: 'root',

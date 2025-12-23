@@ -6,10 +6,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { ItemCatalogoService } from '../../../services/item-catalogo';
-import { CategoriaService } from '../../../services/categoria';
-import { ItemCatalogo, UnidadeMedida } from '../../../interfaces/item-catalogo';
-import { Categoria } from '../../../interfaces/categoria';
+import { ItemCatalogoService } from '@services/item-catalogo';
+import { CategoriaService } from '@services/categoria';
+import { ItemCatalogo, UnidadeMedida } from '@entities/item-catalogo';
+import { Categoria } from '../../../data/types/categoria';
 
 @Component({
   selector: 'app-item-catalogo-form',
@@ -24,7 +24,7 @@ import { Categoria } from '../../../interfaces/categoria';
     RouterLink,
   ],
   templateUrl: './item-catalogo-form.html',
-  styleUrls: ['./item-catalogo-form.css'],
+  styleUrls: ['./item-catalogo-form.scss'],
 })
 export class ItemCatalogoFormComponent implements OnInit {
   private fb = inject(FormBuilder);

@@ -4,15 +4,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { ItemCatalogoService } from '../../../services/item-catalogo';
-import { ItemCatalogo, UnidadeMedida } from '../../../interfaces/item-catalogo';
+import { ItemCatalogoService } from '@services/item-catalogo';
+import { ItemCatalogo, UnidadeMedida } from '@entities/item-catalogo';
 
 @Component({
   selector: 'app-item-catalogo-list',
   standalone: true,
   imports: [CommonModule, MatTableModule, MatButtonModule, MatIconModule, RouterLink],
   templateUrl: './item-catalogo-list.html',
-  styleUrls: ['./item-catalogo-list.css'],
+  styleUrls: ['./item-catalogo-list.scss'],
 })
 export class ItemCatalogoListComponent implements OnInit {
   private itemService = inject(ItemCatalogoService);

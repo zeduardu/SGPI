@@ -4,15 +4,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { CotacaoItemService } from '../../../services/cotacao-item';
-import { CotacaoItem } from '../../../interfaces/cotacao-item';
+import { CotacaoItemService } from '@services/cotacao-item';
+import { CotacaoItem } from '@entities/cotacao-item';
 
 @Component({
   selector: 'app-cotacao-item-list',
   standalone: true,
   imports: [CommonModule, MatTableModule, MatButtonModule, MatIconModule, RouterLink],
   templateUrl: './cotacao-item-list.html',
-  styleUrls: ['./cotacao-item-list.css'],
+  styleUrls: ['./cotacao-item-list.scss'],
 })
 export class CotacaoItemListComponent implements OnInit {
   private cotacaoService = inject(CotacaoItemService);

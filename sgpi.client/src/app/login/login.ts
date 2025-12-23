@@ -6,13 +6,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
+import {MatCheckbox} from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, MatCardModule, MatInputModule, MatButtonModule],
+  imports: [ReactiveFormsModule, CommonModule, MatCardModule, MatInputModule, MatButtonModule, MatCheckbox],
   templateUrl: './login.html',
-  styleUrl: './login.css',
+  styleUrl: './login.scss',
 })
 export class Login {
   loginForm = new FormGroup({
@@ -31,7 +32,6 @@ export class Login {
         },
         error: (err) => {
           console.error('Login failed', err);
-          // TODO: Display error message to the user
         },
       });
     }

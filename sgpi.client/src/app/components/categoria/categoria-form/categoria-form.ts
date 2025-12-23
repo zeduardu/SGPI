@@ -5,8 +5,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { CategoriaService } from '../../../services/categoria';
-import { Categoria } from '../../../interfaces/categoria';
+import { CategoriaService } from '@services/categoria';
+import { Categoria } from '../../../data/types/categoria';
 
 @Component({
   selector: 'app-categoria-form',
@@ -20,7 +20,7 @@ import { Categoria } from '../../../interfaces/categoria';
     RouterLink,
   ],
   templateUrl: './categoria-form.html',
-  styleUrls: ['./categoria-form.css'],
+  styleUrls: ['./categoria-form.scss'],
 })
 export class CategoriaFormComponent implements OnInit {
   private fb = inject(FormBuilder);

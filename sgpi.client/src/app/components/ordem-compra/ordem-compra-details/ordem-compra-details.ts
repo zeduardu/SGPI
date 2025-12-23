@@ -5,8 +5,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
-import { OrdemCompraService } from '../../../services/ordem-compra';
-import { OrdemDeCompra, StatusOrdemDeCompra } from '../../../interfaces/ordem-compra';
+import { OrdemCompraService } from '@services/ordem-compra';
+import { OrdemDeCompra, StatusOrdemDeCompra } from '../../../data/types/ordem-compra';
 import { FormBuilder, FormGroup, FormArray, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -26,7 +26,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule,
   ],
   templateUrl: './ordem-compra-details.html',
-  styleUrl: './ordem-compra-details.css',
+  styleUrl: './ordem-compra-details.scss',
 })
 export class OrdemCompraDetailsComponent implements OnInit {
   ordemCompra?: OrdemDeCompra;

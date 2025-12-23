@@ -6,10 +6,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { EstoqueService } from '../../../services/estoque';
-import { ItemCatalogoService } from '../../../services/item-catalogo';
-import { Estoque } from '../../../interfaces/estoque';
-import { ItemCatalogo } from '../../../interfaces/item-catalogo';
+import { EstoqueService } from '@services/estoque';
+import { ItemCatalogoService } from '@services/item-catalogo';
+import { Estoque } from '@entities/estoque';
+import { ItemCatalogo } from '@entities/item-catalogo';
 
 @Component({
   selector: 'app-estoque-form',
@@ -24,7 +24,7 @@ import { ItemCatalogo } from '../../../interfaces/item-catalogo';
     RouterLink,
   ],
   templateUrl: './estoque-form.html',
-  styleUrls: ['./estoque-form.css'],
+  styleUrls: ['./estoque-form.scss'],
 })
 export class EstoqueFormComponent implements OnInit {
   private fb = inject(FormBuilder);

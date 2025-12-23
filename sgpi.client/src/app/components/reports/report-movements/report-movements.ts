@@ -10,12 +10,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
-import { MovimentacaoService } from '../../../services/movimentacao';
-import { MovimentacaoEstoque, TipoMovimentacao } from '../../../interfaces/movimentacao-estoque';
-import { ItemCatalogoService } from '../../../services/item-catalogo';
-import { UserService } from '../../../services/user';
-import { ItemCatalogo } from '../../../interfaces/item-catalogo';
-import { Usuario } from '../../../interfaces/usuario';
+import { MovimentacaoService } from '@services/movimentacao';
+import { MovimentacaoEstoque, TipoMovimentacao } from '@entities/movimentacao-estoque';
+import { ItemCatalogoService } from '@services/item-catalogo';
+import { UserService } from '@services/user';
+import { ItemCatalogo } from '@entities/item-catalogo';
+import { Usuario } from '@entities/usuario';
 
 @Component({
   selector: 'app-report-movements',
@@ -34,7 +34,7 @@ import { Usuario } from '../../../interfaces/usuario';
     MatIconModule,
   ],
   templateUrl: './report-movements.html',
-  styleUrl: './report-movements.css',
+  styleUrl: './report-movements.scss',
 })
 export class ReportMovementsComponent implements OnInit {
   filterForm: FormGroup;

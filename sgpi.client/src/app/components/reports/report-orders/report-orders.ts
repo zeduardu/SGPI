@@ -10,10 +10,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
-import { OrdemCompraService } from '../../../services/ordem-compra';
-import { OrdemDeCompra, StatusOrdemDeCompra } from '../../../interfaces/ordem-compra';
-import { UserService } from '../../../services/user';
-import { Usuario } from '../../../interfaces/usuario';
+import { OrdemCompraService } from '@services/ordem-compra';
+import { OrdemDeCompra, StatusOrdemDeCompra } from '@entities/ordem-compra';
+import { UserService } from '@services/user';
+import { Usuario } from '@entities/usuario';
 
 @Component({
   selector: 'app-report-orders',
@@ -32,7 +32,7 @@ import { Usuario } from '../../../interfaces/usuario';
     MatIconModule,
   ],
   templateUrl: './report-orders.html',
-  styleUrl: './report-orders.css',
+  styleUrl: './report-orders.scss',
 })
 export class ReportOrdersComponent implements OnInit {
   filterForm: FormGroup;

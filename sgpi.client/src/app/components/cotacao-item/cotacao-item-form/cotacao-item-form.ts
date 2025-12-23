@@ -8,12 +8,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { CotacaoItemService } from '../../../services/cotacao-item';
-import { ItemCatalogoService } from '../../../services/item-catalogo';
-import { FornecedorService } from '../../../services/fornecedor';
-import { CotacaoItem } from '../../../interfaces/cotacao-item';
-import { ItemCatalogo } from '../../../interfaces/item-catalogo';
-import { Fornecedor } from '../../../interfaces/fornecedor';
+import { CotacaoItemService } from '@services/cotacao-item';
+import { ItemCatalogoService } from '@services/item-catalogo';
+import { FornecedorService } from '@services/fornecedor';
+import { CotacaoItem } from '@entities/cotacao-item';
+import { ItemCatalogo } from '@entities/item-catalogo';
+import { Fornecedor } from '../../../data/types/fornecedor';
 
 @Component({
   selector: 'app-cotacao-item-form',
@@ -30,7 +30,7 @@ import { Fornecedor } from '../../../interfaces/fornecedor';
     RouterLink,
   ],
   templateUrl: './cotacao-item-form.html',
-  styleUrls: ['./cotacao-item-form.css'],
+  styleUrls: ['./cotacao-item-form.scss'],
 })
 export class CotacaoItemFormComponent implements OnInit {
   private fb = inject(FormBuilder);

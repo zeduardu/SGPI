@@ -6,8 +6,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
-import { EstoqueService } from '../../services/estoque';
-import { Estoque } from '../../interfaces/estoque';
+import { EstoqueService } from '@services/estoque';
+import { Estoque } from '@entities/estoque';
 import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
@@ -22,7 +22,7 @@ import { SelectionModel } from '@angular/cdk/collections';
     MatIconModule,
   ],
   templateUrl: './shopping-list.html',
-  styleUrl: './shopping-list.css',
+  styleUrl: './shopping-list.scss',
 })
 export class ShoppingListComponent implements OnInit {
   dataSource: Estoque[] = [];

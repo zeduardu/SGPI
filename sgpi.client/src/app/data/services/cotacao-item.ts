@@ -1,8 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CotacaoItem } from '../interfaces/cotacao-item';
-import { environment } from '../../environments/environment';
+import { CotacaoItem } from '@entities/cotacao-item';
+import { environment } from '@env';
 
 @Injectable({
   providedIn: 'root',

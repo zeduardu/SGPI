@@ -17,7 +17,7 @@ import { RouterModule } from '@angular/router';
     RouterModule
   ],
   templateUrl: './layout.html',
-  styleUrl: './layout.css',
+  styleUrl: './layout.scss',
 })
 export class Layout {
 

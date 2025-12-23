@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { StockStatus } from '../interfaces/stock-status';
-import { MovimentacaoEstoque } from '../interfaces/movimentacao-estoque';
+import { StockStatus } from '../data/types/stock-status';
+import { MovimentacaoEstoque } from '../data/types/movimentacao-estoque';
 import { environment } from '../../environments/environment';
 
 @Injectable({

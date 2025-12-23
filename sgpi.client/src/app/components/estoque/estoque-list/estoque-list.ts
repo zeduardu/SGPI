@@ -4,15 +4,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { EstoqueService } from '../../../services/estoque';
-import { Estoque } from '../../../interfaces/estoque';
+import { EstoqueService } from '@services/estoque';
+import { Estoque } from '@entities/estoque';
 
 @Component({
   selector: 'app-estoque-list',
   standalone: true,
   imports: [CommonModule, MatTableModule, MatButtonModule, MatIconModule, RouterLink],
   templateUrl: './estoque-list.html',
-  styleUrls: ['./estoque-list.css'],
+  styleUrls: ['./estoque-list.scss'],
 })
 export class EstoqueListComponent implements OnInit {
   private estoqueService = inject(EstoqueService);

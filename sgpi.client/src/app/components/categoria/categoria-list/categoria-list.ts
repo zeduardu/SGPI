@@ -4,15 +4,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { CategoriaService } from '../../../services/categoria';
-import { Categoria } from '../../../interfaces/categoria';
+import { CategoriaService } from '@services/categoria';
+import { Categoria } from '../../../data/types/categoria';
 
 @Component({
   selector: 'app-categoria-list',
   standalone: true,
   imports: [CommonModule, MatTableModule, MatButtonModule, MatIconModule, RouterLink],
   templateUrl: './categoria-list.html',
-  styleUrls: ['./categoria-list.css'],
+  styleUrls: ['./categoria-list.scss'],
 })
 export class CategoriaListComponent implements OnInit {
   private categoriaService = inject(CategoriaService);

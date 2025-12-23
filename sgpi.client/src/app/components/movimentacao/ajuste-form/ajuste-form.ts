@@ -6,9 +6,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { Router, RouterLink } from '@angular/router';
-import { MovimentacaoService } from '../../../services/movimentacao';
-import { ItemCatalogoService } from '../../../services/item-catalogo';
-import { ItemCatalogo } from '../../../interfaces/item-catalogo';
+import { MovimentacaoService } from '@services/movimentacao';
+import { ItemCatalogoService } from '@services/item-catalogo';
+import { ItemCatalogo } from '@entities/item-catalogo';
 
 @Component({
   selector: 'app-ajuste-form',
@@ -23,7 +23,7 @@ import { ItemCatalogo } from '../../../interfaces/item-catalogo';
     RouterLink,
   ],
   templateUrl: './ajuste-form.html',
-  styleUrls: ['./ajuste-form.css'],
+  styleUrls: ['./ajuste-form.scss'],
 })
 export class AjusteFormComponent implements OnInit {
   private fb = inject(FormBuilder);

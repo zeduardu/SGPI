@@ -4,15 +4,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
-import { OrdemCompraService } from '../../../services/ordem-compra';
-import { OrdemDeCompra, StatusOrdemDeCompra } from '../../../interfaces/ordem-compra';
+import { OrdemCompraService } from '@services/ordem-compra';
+import { OrdemDeCompra, StatusOrdemDeCompra } from '../../../data/types/ordem-compra';
 
 @Component({
   selector: 'app-ordem-compra-list',
   standalone: true,
   imports: [CommonModule, MatTableModule, MatButtonModule, MatIconModule, RouterModule],
   templateUrl: './ordem-compra-list.html',
-  styleUrl: './ordem-compra-list.css',
+  styleUrl: './ordem-compra-list.scss',
 })
 export class OrdemCompraListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'fornecedor', 'dataCriacao', 'status', 'acoes'];

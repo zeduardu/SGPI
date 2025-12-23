@@ -1,26 +1,31 @@
+mat-form-field {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
 /* Container Principal: Ocupa a tela toda e centraliza o conteúdo */
 .login-container {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #0f172a; /* Fundo escuro profundo */
+  //background: #0f172a; /* Fundo escuro profundo */
   position: relative;
   overflow: hidden;
   font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* Círculos vibrantes ao fundo (Blobs) */
-.blob {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-  filter: blur(80px);
-  border-radius: 50%;
-  z-index: 0;
-  animation: move 10s infinite alternate;
-}
+///* Círculos vibrantes ao fundo (Blobs) */
+//.blob {
+//  position: absolute;
+//  width: 300px;
+//  height: 300px;
+//  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+//  filter: blur(80px);
+//  border-radius: 50%;
+//  z-index: 0;
+//  animation: move 10s infinite alternate;
+//}
 
 .blob:nth-child(2) {
   background: linear-gradient(135deg, #1c448f 0%, #551498 100%);
@@ -43,9 +48,8 @@
   padding: 40px;
   background: rgba(255, 255, 255, 0.05); /* Transparência */
   backdrop-filter: blur(15px); /* Desfoque do vidro */
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgb(158 158 158);
   border-radius: 24px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
 .login-header {
@@ -54,91 +58,85 @@
 }
 
 .login-header h2 {
-  color: #fff;
+  //color: #fff;
   font-size: 2rem;
   margin-bottom: 8px;
 }
 
 .login-header p {
-  color: #94a3b8;
+  //color: #94a3b8;
   font-size: 0.9rem;
 }
 
 /* Estilização do Formulário */
-.input-group {
-  margin-bottom: 20px;
-}
+//.input-group {
+//  margin-bottom: 20px;
+//}
 
-.input-group label {
-  display: block;
-  color: #e2e8f0;
-  margin-bottom: 8px;
-  font-size: 0.85rem;
-}
+//.input-group label {
+//  display: block;
+//  color: #e2e8f0;
+//  margin-bottom: 8px;
+//  font-size: 0.85rem;
+//}
 
-.input-group input {
-  width: 100%;
-  padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  color: #fff;
-  outline: none;
-  transition: all 0.3s ease;
-  box-sizing: border-box; /* Garante que o padding não quebre a largura */
-}
+//.input-group input {
+//  width: 100%;
+//  padding: 12px 16px;
+//  background: rgba(255, 255, 255, 0.05);
+//  border: 1px solid rgba(255, 255, 255, 0.1);
+//  border-radius: 12px;
+//  color: #fff;
+//  outline: none;
+//  transition: all 0.3s ease;
+//  box-sizing: border-box; /* Garante que o padding não quebre a largura */
+//}
 
-.input-group input:focus {
-  border-color: #6366f1;
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
-}
+//.input-group input:focus {
+//  border-color: #6366f1;
+//  background: rgba(255, 255, 255, 0.1);
+//  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+//}
 
 .options {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 25px;
-  font-size: 0.8rem;
-  color: #94a3b8;
 }
 
-.options a {
-  color: #94a3b8;
-  text-decoration: none;
-}
-
-/* Botão Vibrante */
 .login-button {
   width: 100%;
   padding: 14px;
-  background: linear-gradient(90deg, #6366f1, #a855f7);
-  border: none;
+  border: 1px solid rgb(158 158 158);
   border-radius: 12px;
-  color: #fff;
-  font-weight: 600;
+  color: rgb(112, 112, 112);
+  background: rgb(0, 0, 0, 0);
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
 .login-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.5);
+  background-color: rgb(0, 0, 0, 0);
+  border-color: #000000;
+  color: #000000;
 }
 
 .login-button:active {
-  transform: translateY(0);
+  border: none;
+  background-color: #673ab7;
+  color: #fff
 }
 
 .footer-link {
   text-align: center;
   margin-top: 25px;
-  color: #94a3b8;
+  color: #000000;
   font-size: 0.85rem;
 }
 
 .footer-link a {
-  color: #6366f1;
+  color: #673ab7;
   font-weight: 600;
   text-decoration: none;
 }

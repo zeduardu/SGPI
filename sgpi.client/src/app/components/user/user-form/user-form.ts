@@ -6,8 +6,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { UserService } from '../../../services/user';
-import { Usuario } from '../../../interfaces/usuario';
+import { UserService } from '@services/user';
+import { Usuario } from '../../../data/types/usuario';
 
 @Component({
   selector: 'app-user-form',
@@ -22,7 +22,7 @@ import { Usuario } from '../../../interfaces/usuario';
     RouterLink,
   ],
   templateUrl: './user-form.html',
-  styleUrls: ['./user-form.css'],
+  styleUrls: ['./user-form.scss'],
 })
 export class UserFormComponent implements OnInit {
   private fb = inject(FormBuilder);

@@ -4,15 +4,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { FornecedorService } from '../../../services/fornecedor';
-import { Fornecedor } from '../../../interfaces/fornecedor';
+import { FornecedorService } from '@services/fornecedor';
+import { Fornecedor } from '../../../data/types/fornecedor';
 
 @Component({
   selector: 'app-fornecedor-list',
   standalone: true,
   imports: [CommonModule, MatTableModule, MatButtonModule, MatIconModule, RouterLink],
   templateUrl: './fornecedor-list.html',
-  styleUrls: ['./fornecedor-list.css'],
+  styleUrls: ['./fornecedor-list.scss'],
 })
 export class FornecedorListComponent implements OnInit {
   private fornecedorService = inject(FornecedorService);

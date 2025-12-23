@@ -5,15 +5,15 @@ import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { Chart } from 'chart.js/auto';
 import { DashboardService } from './dashboard.service';
-import { StockStatus } from '../interfaces/stock-status';
-import { MovimentacaoEstoque } from '../interfaces/movimentacao-estoque';
+import { StockStatus } from '../data/types/stock-status';
+import { MovimentacaoEstoque } from '../data/types/movimentacao-estoque';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [CommonModule, MatTableModule, MatCardModule, HttpClientModule],
   templateUrl: './dashboard.html',
-  styleUrl: './dashboard.css',
+  styleUrl: './dashboard.scss',
   providers: [DashboardService],
 })
 export class Dashboard implements OnInit {

@@ -8,11 +8,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { Router, RouterModule } from '@angular/router';
-import { OrdemCompraService } from '../../../services/ordem-compra';
-import { FornecedorService } from '../../../services/fornecedor';
-import { ItemCatalogoService } from '../../../services/item-catalogo';
-import { Fornecedor } from '../../../interfaces/fornecedor';
-import { ItemCatalogo } from '../../../interfaces/item-catalogo';
+import { OrdemCompraService } from '@services/ordem-compra';
+import { FornecedorService } from '@services/fornecedor';
+import { ItemCatalogoService } from '@services/item-catalogo';
+import { Fornecedor } from '../../../data/types/fornecedor';
+import { ItemCatalogo } from '@entities/item-catalogo';
 
 @Component({
   selector: 'app-ordem-compra-form',
@@ -29,7 +29,7 @@ import { ItemCatalogo } from '../../../interfaces/item-catalogo';
     RouterModule,
   ],
   templateUrl: './ordem-compra-form.html',
-  styleUrl: './ordem-compra-form.css',
+  styleUrl: './ordem-compra-form.scss',
 })
 export class OrdemCompraFormComponent implements OnInit {
   form: FormGroup;

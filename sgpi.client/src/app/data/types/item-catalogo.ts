@@ -1,4 +1,4 @@
-import { Categoria } from './categoria';
+import { Categoria } from '@entities/categoria';
 
 export interface ItemCatalogo {
   id: number;
