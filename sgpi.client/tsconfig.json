@@ -18,6 +18,7 @@
       "@entities/*": ["./src/app/data/types/*"],
       "@services/*": ["./src/app/data/services/*"],
       "@env": ["./src/environments/environment"],
+      "@shared/*": ["./src/app/shared/*"],
     }
   },
   "angularCompilerOptions": {
