@@ -7,11 +7,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 import {MatCheckbox} from '@angular/material/checkbox';
+import { MessageContainer } from "../shared/components/message-container/message-container";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, MatCardModule, MatInputModule, MatButtonModule, MatCheckbox],
+  imports: [ReactiveFormsModule, CommonModule, MatCardModule, MatInputModule, MatButtonModule, MatCheckbox, MessageContainer],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
@@ -31,7 +32,7 @@ export class Login {
           this.router.navigate(['/dashboard']);
         },
         error: (err) => {
-          console.error('Login failed', err);
+          // console.error('Login failed', err);
         },
       });
     }

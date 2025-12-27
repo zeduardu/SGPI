@@ -9,11 +9,14 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './auth/auth.interceptor';
 
 import { routes } from './app.routes';
+import { httpErrorInterceptor } from './core/interceptors/http-error-interceptor';
 
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(),
+    provideHttpClient(
+      withInterceptors([authInterceptor, httpErrorInterceptor])
+    ),
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),

@@ -1,22 +1,18 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { AppMessage } from '@entities/app-message';
 import { MessageService } from '@services/message.service';
 import { Subject, takeUntil } from 'rxjs';
-import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-message-container',
   imports: [],
   templateUrl: './message-container.html',
   styleUrl: './message-container.scss',
 })
-export class MessageContainer implements OnInit {
+export class MessageContainer implements OnInit, OnDestroy {
   messages: AppMessage[] = [];
-  horizontalPosition: MatSnackBarHorizontalPosition = 'start';
-  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   private destroy$ = new Subject<void>();
   private messageService: MessageService = inject(MessageService);
-  private _snackBar = inject(MatSnackBar);
-
 
   constructor() {}
 
@@ -35,16 +31,5 @@ export class MessageContainer implements OnInit {
 
   onCloseMessage(id: string): void {
     this.messageService.removeMessage(id);
-  }
-
-  clearAll(): void {
-    this.messageService.clearAllMessages();
-  }
-
-  openSnackBar(message: string) {
-    this._snackBar.open(message, 'Close', {
-      horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
-    });
   }
 }

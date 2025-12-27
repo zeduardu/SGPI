@@ -11,7 +11,7 @@ export const httpErrorInterceptor: HttpInterceptorFn = (req, next) => {
     catchError(
       (error: HttpErrorResponse) => {
         // Log do erro
-        console.error('HTTP Error:', error);
+        // console.error('HTTP Error:', error);
         // Tratamento especifico por status
         switch (error.status) {
           case 401:
