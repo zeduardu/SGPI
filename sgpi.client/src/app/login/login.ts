@@ -8,6 +8,8 @@ import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 import {MatCheckbox} from '@angular/material/checkbox';
 import { MessageContainer } from "../shared/components/message-container/message-container";
+import { MatDialog } from '@angular/material/dialog';
+import { ForgotPasswordDialog } from './forgot-password-dialog/forgot-password-dialog';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +24,7 @@ export class Login {
     password: new FormControl('', Validators.required),
   });
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private dialog: MatDialog) {}
 
   onSubmit() {
     if (this.loginForm.valid) {
@@ -36,5 +38,11 @@ export class Login {
         },
       });
     }
+  }
+
+  openForgotPasswordDialog() {
+    this.dialog.open(ForgotPasswordDialog, {
+      width: '400px'
+    });
   }
 }

@@ -1,5 +1,17 @@
-﻿### GET request to example server
-GET https://examples.http-client.intellij.net/get
-    ?generated-in=JetBrains Rider
+﻿###
+POST https://localhost:40443/api/auth/forgot-password
+Content-Type: application/json
+
+{
+  "email": "zeduardu@gmail.com"
+}
 
 ###
+POST https://localhost:40443/api/auth/reset-password
+Content-Type: application/json
+
+{
+  "email": "zeduardu@gmail.com",
+  "token": "CfDJ8KVoSYJ2PdtBi4Fo+bbf9bA8TA19OILTxh6sOnD8h6ksRhdT97YQMCJec8i+OAkTXx59sVqS3RI5iF9OhXCWFwSN9RK4Ki8AK2hS3oGQbGpQxoq77HueWVue3whDTzOM6BhdY1/4QGPMAd+w4UOn4PBBjw+p+cQdAPAX7jxhXE9RcuoTNM0N2Tk1+7CZHYHogRpSBobIzwO9xDeQPPjXXv1WZGeNYsC6zB8yN9W9iAgm",
+  "newpassword": "12345678"
+}

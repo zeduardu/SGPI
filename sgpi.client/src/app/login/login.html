@@ -22,7 +22,7 @@
 
       <div class="options">
         <mat-checkbox>Lembrar-me</mat-checkbox>
-        <a matButton href="#" target="_blank">Esqueceu a senha?</a>
+        <button type="button" mat-button (click)="openForgotPasswordDialog()">Esqueceu a senha?</button>
       </div>
 
       <button class="login-button" type="submit">Entrar</button>

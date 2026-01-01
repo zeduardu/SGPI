@@ -4,8 +4,10 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Sgpi.Server.Infrastructure.ExternalServices.Email;
 using SGPI.Core.Entities;
 using SGPI.Core.Interfaces;
 
@@ -15,11 +17,13 @@ namespace SGPI.Application.Services
   {
     private readonly UserManager<Usuario> _userManager;
     private readonly IConfiguration _configuration;
+    private readonly IEmailService _emailService;
 
-    public AuthService(UserManager<Usuario> userManager, IConfiguration configuration)
+    public AuthService(UserManager<Usuario> userManager, IConfiguration configuration, IEmailService emailService)
     {
       _userManager = userManager;
       _configuration = configuration;
+      _emailService = emailService;
     }
 
     public async Task<string?> AuthenticateAsync(string email, string password)
@@ -56,6 +60,39 @@ namespace SGPI.Application.Services
       );
 
       return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+
+    public async Task<string> ForgotPasswordAsync(string email)
+    {
+        var user = await _userManager.FindByEmailAsync(email);
+        if (user == null)
+        {
+            return string.Empty;
+        }
+
+        var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+        var resetUrl = "https://localhost:40443/api/auth/reset-password";
+        var param = new Dictionary<string, string?>
+        {
+            {"token", resetToken },
+            {"email", email }
+        };
+        var resetLink = QueryHelpers.AddQueryString(resetUrl, param);
+
+        return resetLink;
+    }
+
+
+    public async Task<bool> ResetPasswordAsync(string email, string token, string newPassword)
+    {
+        var user = await _userManager.FindByEmailAsync(email);
+        if (user == null)
+        {
+            return false;
+        }
+
+        var result = await _userManager.ResetPasswordAsync(user, token, newPassword);
+        return result.Succeeded;
     }
   }
 }

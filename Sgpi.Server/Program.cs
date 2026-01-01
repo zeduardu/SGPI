@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Sgpi.Server.Infrastructure.ExternalServices.Email;
 using SGPI.Application.Services;
 using SGPI.Core.Entities;
 using SGPI.Core.Interfaces;
@@ -16,7 +17,8 @@ builder.Services.AddDbContext<SgpiContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddIdentity<Usuario, IdentityRole>()
-    .AddEntityFrameworkStores<SgpiContext>();
+    .AddEntityFrameworkStores<SgpiContext>()
+    .AddDefaultTokenProviders();
 
 builder.Services.AddAuthentication(options =>
 {
@@ -43,6 +45,9 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("GestorNTI", policy => policy.RequireRole("Admin", "GestorNTI"));
     options.AddPolicy("OperadorNTI", policy => policy.RequireRole("Admin", "GestorNTI", "OperadorNTI"));
 });
+
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailConfiguration"));
+builder.Services.AddTransient<IEmailService, EmailService>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
